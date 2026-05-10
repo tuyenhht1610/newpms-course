@@ -560,6 +560,39 @@ const MODULES = [
   },
   {
     id: 10,
+    title: "Fixed Charge",
+    subtitle: "Phụ phí cố định cho Long Stay",
+    icon: "📌",
+    color: "#7c3aed",
+    tag: "NGHIỆP VỤ",
+    lessons: [
+      {
+        title: "Fixed Charge là gì?",
+        content: [
+          { type: "heading", text: "Fixed Charge — Phụ phí Cố định" },
+          { type: "intro", text: "Phụ phí Cố định (Fixed Charges) được dùng để thiết lập trước các khoản ghi nợ tự động trên một đặt phòng — thường áp dụng cho khách Long Stay." },
+          { type: "divider", text: "Định nghĩa" },
+          { type: "point", icon: "📌", title: "Fixed Charge là gì?", desc: "Là các khoản phí được thiết lập sẵn và tự động ghi nhận lên folio theo chu kỳ tháng, không tính theo từng ngày như room charge thông thường." },
+          { type: "divider", text: "Ví dụ các loại Fixed Charge" },
+          { type: "card2", items: [
+            { title: "🏠 Tiền thuê phòng theo tháng", desc: "Ghi nhận tiền phòng cố định theo tháng thay vì tính theo đêm." },
+            { title: "🚗 Phí đậu xe", desc: "Phí giữ xe cố định hàng tháng cho khách long stay." },
+          ]},
+          { type: "card2", items: [
+            { title: "⚡ Tiền điện", desc: "Phí điện tiêu thụ được ghi nhận tự động theo chu kỳ tháng." },
+            { title: "➕ Các phụ phí khác", desc: "Bất kỳ khoản phí nào được thoả thuận trước và ghi nhận tự động định kỳ." },
+          ]},
+          { type: "divider", text: "Nguyên tắc ghi nhận" },
+          { type: "point", icon: "📅", title: "Ghi nhận theo tháng", desc: "Fixed Charge được ghi nhận theo chu kỳ tháng, không tính theo từng ngày lưu trú." },
+          { type: "point", icon: "📆", title: "Ngày cố định", desc: "Mỗi Fixed Charge xác định 1 ngày cố định trong tháng để tự động post charge lên folio." },
+          { type: "warn", text: "Fixed Charge chỉ áp dụng cho booking Long Stay. Cần thiết lập đúng ngày cố định trước khi checkin để tránh sai lệch ghi nhận doanh thu." },
+        ],
+        hasDemo: false,
+      },
+    ],
+  },
+  {
+    id: 11,
     title: "Booking B2B & Tách Folio",
     subtitle: "Công ty chi trả & Split/Transfer",
     icon: "🤝",
