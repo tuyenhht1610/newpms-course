@@ -11,7 +11,7 @@ const MODULES = [
     lessons: [
       {
         title: "Màn hình Profile khách lẻ",
-        image: "/newpms-course/images/m01_profile_le.png",
+        image: "/newpms-course/images/m01_profile_le.jpg",
         imageCaption: "Open: Booker — Form nhập thông tin profile khách lẻ trên NewPMS",
         content: [
           { type: "heading", text: "Profile Khách Lẻ — Các trường thông tin" },
@@ -51,7 +51,7 @@ const MODULES = [
     lessons: [
       {
         title: "Thông tin chính công ty",
-        image: "/newpms-course/images/m02_profile_cty_main.png",
+        image: "/newpms-course/images/m02_profile_cty_main.jpg",
         imageCaption: "Profile Khách Công Ty — Tab Contacts & Addresses",
         content: [
           { type: "heading", text: "Profile Khách Công Ty — Thông tin chính" },
@@ -71,7 +71,7 @@ const MODULES = [
       },
       {
         title: "Tab Sales & Purchase",
-        image: "/newpms-course/images/m02_profile_cty_sales.png",
+        image: "/newpms-course/images/m02_profile_cty_sales.jpg",
         imageCaption: "Profile Khách Công Ty — Tab Sales & Purchase",
         content: [
           { type: "heading", text: "Tab Sales & Purchase" },
@@ -111,7 +111,7 @@ const MODULES = [
     lessons: [
       {
         title: "Khái niệm mới trong NewPMS",
-        image: "/newpms-course/images/m03_booking_details_checkin.png",
+        image: "/newpms-course/images/m03_booking_details.jpg",
         imageCaption: "Tab Booking Details — Expected/Actual Checkin-Checkout, bảng Room Booking và Advance Service Lines",
         content: [
           { type: "heading", text: "Các Khái Niệm Mới — NewPMS Odoo 18" },
@@ -136,7 +136,7 @@ const MODULES = [
       },
       {
         title: "Màn hình tạo Booking",
-        image: "/newpms-course/images/m03_booking_main.png",
+        image: "/newpms-course/images/m03_booking_main.jpg",
         imageCaption: "Booking HR00495 — trạng thái Confirm, các action buttons và thông tin chính",
         content: [
           { type: "heading", text: "Màn Hình Tạo Booking" },
@@ -171,7 +171,7 @@ const MODULES = [
       },
       {
         title: "Tab Booking Details",
-        image: "/newpms-course/images/m03_booking_details.png",
+        image: "/newpms-course/images/m03_booking_details.jpg",
         imageCaption: "Booking Details — Expected/Actual Checkin-Checkout, bảng Room Booking và Advance Service Lines",
         content: [
           { type: "heading", text: "Tab Booking Details" },
@@ -196,7 +196,7 @@ const MODULES = [
       },
       {
         title: "Advance Service Lines",
-        image: "/newpms-course/images/m03_advance_service_lines.png",
+        image: "/newpms-course/images/m03_advance_service.jpg",
         imageCaption: "Advance Service Lines — TTD Ăn sáng, Pick up/Drop off, Minibar theo từng ngày với Service Start/End riêng",
         content: [
           { type: "heading", text: "Advance Service Lines" },
@@ -225,7 +225,6 @@ const MODULES = [
       },
       {
         title: "Folio — Tính năng & Quy tắc",
-        image: "/newpms-course/images/m03_folio_main.png",
         imageCaption: "Folio — thông tin chính, action buttons và tab Services/Billings",
         content: [
           { type: "heading", text: "Folio — Tính năng & Quy tắc" },
@@ -259,8 +258,6 @@ const MODULES = [
           { type: "point", icon: "➕", title: "Advance Service Lines", desc: "Dịch vụ kèm theo: Charge, Description, Category, Quantity, Unit Price, Service Start/End, Taxes, Disc.%, Subtotal." },
           { type: "divider", text: "Tab Billings" },
         ],
-        image2: "/newpms-course/images/m03_folio_billings.png",
-        image2Caption: "Tab Billings — Deposit Transactions và Payment Transactions với đầy đủ Journal Entry, Line Type, Account, Debit/Credit/Balance",
         content3: [
           { type: "point", icon: "📊", title: "Billings", desc: "Toàn bộ giao dịch tài chính của folio — bao gồm Deposit Transactions và Payment Transactions." },
         ],
@@ -274,21 +271,20 @@ const MODULES = [
           { type: "divider", text: "1. Mở Reservation Detail từ Dashboard" },
           { type: "point", icon: "↗️", title: "Nút Expand góc phải", desc: "Từ Management Dashboard, click vào booking trên calendar → popup hiện ra → bấm nút Expand (mũi tên góc phải trên) để mở trang Reservation Detail đầy đủ mà không cần thoát khỏi Dashboard." },
         ],
-        image1: "/newpms-course/images/m03_quick_expand.png",
+        image1: "/newpms-course/images/m03_quick_expand.jpg",
         image1Caption: "Nút Expand góc phải — truy cập nhanh vào Reservation Detail từ Dashboard",
         content2: [
           { type: "divider", text: "2. Thay đổi phòng trước Checkin" },
           { type: "point", icon: "✏️", title: "Edit trực tiếp trên dòng Room Booking", desc: "Khi booking đang ở trạng thái Confirm (chưa checkin), Ops có thể click trực tiếp vào ô Room Number trên tab Booking Details để thay đổi phòng — không cần dùng nút Change Room." },
           { type: "warn", text: "Lưu ý: Sau khi đã Checkin, phải dùng nút Change Room trên Folio — không thể edit trực tiếp nữa." },
         ],
-        image2: "/newpms-course/images/m03_quick_room.png",
-        image2Caption: "Edit trực tiếp Room Number trên Booking Details — dropdown chọn phòng trống",
+        image2: "/newpms-course/images/m03_quick_room.jpg",
         content3: [
           { type: "divider", text: "3. Thêm mới Advance Service" },
           { type: "point", icon: "➕", title: "Add a line trực tiếp", desc: "Trên tab Booking Details → Advance Service Lines → click Add a line → chọn Product từ dropdown → điền Service Start/End, Quantity → lưu lại." },
           { type: "point", icon: "🔍", title: "Tìm kiếm dịch vụ", desc: "Gõ tên dịch vụ vào dropdown để lọc nhanh. Nếu không tìm thấy, chọn Search More để xem toàn bộ danh sách." },
         ],
-        image3: "/newpms-course/images/m03_quick_addline.png",
+        image3: "/newpms-course/images/m03_quick_addline.jpg",
         image3Caption: "Add a line — dropdown chọn dịch vụ (BF, minibar, spa...) với chức năng Search More",
         content4: [],
         hasDemo: false,
@@ -306,7 +302,6 @@ const MODULES = [
     lessons: [
       {
         title: "Quy định Deposit",
-        image: "/newpms-course/images/m04_deposit_form.png",
         imageCaption: "Form Deposit — chọn Journal (tài khoản OCB) tương ứng với chi nhánh",
         content: [
           { type: "heading", text: "Deposit — Quy định & Xử lý" },
@@ -344,7 +339,7 @@ const MODULES = [
     lessons: [
       {
         title: "Xử lý No Show",
-        image: "/newpms-course/images/m05_noshow_form.png",
+        image: "/newpms-course/images/m05_nohow_form.jpg",
         imageCaption: "Form No Show — chọn loại No Show, nhập phí và Guest Arrival Date (nếu Partial)",
         content: [
           { type: "heading", text: "Xử lý No Show" },
@@ -440,7 +435,6 @@ const MODULES = [
       },
       {
         title: "Tab Billing trong Folio",
-        image: "/newpms-course/images/m07_billing_tab.png",
         imageCaption: "Tab Billings trong Folio — Deposit Transactions & Payment Transactions",
         content: [
           { type: "heading", text: "Tab Billing — Folio" },
@@ -501,7 +495,6 @@ const MODULES = [
       },
       {
         title: "Nguyên tắc chạy Night Audit",
-        image: "/newpms-course/images/m08_night_audit_steps.png",
         imageCaption: "Màn hình Night Audit — các bước Preparation, Execution và Roll Date",
         content: [
           { type: "heading", text: "Night Audit — Nguyên tắc" },
@@ -515,8 +508,6 @@ const MODULES = [
           { type: "point", icon: "📊", title: "Tổng hợp doanh thu", desc: "Revenue by Department (Room, F&B, Spa, Other) và Payment Methods (Cash, Credit Card, Bank Transfer, City Ledger)." },
           { type: "divider", text: "Báo cáo sau khi chạy" },
         ],
-        image2: "/newpms-course/images/m08_night_audit_log.png",
-        image2Caption: "Night Audit Log — trạng thái Success, các bước Pass và file ZIP báo cáo tổng hợp",
         content3: [
           { type: "point", icon: "📁", title: "Log & Report", desc: "Hệ thống generate: Daily Revenue Report, Occupancy Report (số phòng available, sold, OOO), Payment Summary, Cashier Balance Report." },
           { type: "point", icon: "🗂️", title: "Night Audit Log", desc: "Mỗi chi nhánh sau khi chạy thành công đều được ghi nhận lại log, các hoá đơn đã phát sinh và file ZIP báo cáo tổng hợp — tiện lợi cho tra cứu và lưu trữ." },
@@ -607,7 +598,6 @@ const MODULES = [
     lessons: [
       {
         title: "Folio cho Booking B2B",
-        image: "/newpms-course/images/m10_folio_b2b.png",
         imageCaption: "Folio B2B — Billing To gán về công ty, Booker là thông tin công ty",
         content: [
           { type: "heading", text: "Xử lý Folio cho Booking B2B" },
@@ -626,7 +616,6 @@ const MODULES = [
       },
       {
         title: "Tách gộp Folio",
-        image: "/newpms-course/images/m10_folio_transfer.png",
         imageCaption: "Folio Transfer — chọn Destination Folio và các charge cần transfer",
         content: [
           { type: "heading", text: "Tách gộp Folio — Split & Transfer" },
