@@ -11,7 +11,7 @@ const MODULES = [
     lessons: [
       {
         title: "Màn hình Profile khách lẻ",
-        image: "/images/m01_profile_le.jpg",
+        image: "/newpms-course/images/m01_profile_le.jpg",
         imageCaption: "Open: Booker — Form nhập thông tin profile khách lẻ trên NewPMS",
         content: [
           { type: "heading", text: "Profile Khách Lẻ — Các trường thông tin" },
@@ -51,7 +51,7 @@ const MODULES = [
     lessons: [
       {
         title: "Thong tin chinh cong ty",
-        image: "/images/m02_profile_cty_main.jpg",
+        image: "/newpms-course/images/m02_profile_cty_main.jpg",
         imageCaption: "Profile Khach Cong Ty — Tab Contacts & Addresses",
         content: [
           { type: "heading", text: "Profile Khach Cong Ty — Thong tin chinh" },
@@ -71,7 +71,7 @@ const MODULES = [
       },
       {
         title: "Tab Sales & Purchase",
-        image: "/images/m02_profile_cty_sales.jpg",
+        image: "/newpms-course/images/m02_profile_cty_sales.jpg",
         imageCaption: "Profile Khach Cong Ty — Tab Sales & Purchase",
         content: [
           { type: "heading", text: "Tab Sales & Purchase" },
@@ -134,7 +134,7 @@ const MODULES = [
       },
       {
         title: "Man hinh tao Booking",
-        image: "/images/m03_booking_main.jpg",
+        image: "/newpms-course/images/m03_booking_main.jpg",
         imageCaption: "Booking HR00495 — trang thai Confirm, cac action buttons va thong tin chinh",
         content: [
           { type: "heading", text: "Man Hinh Tao Booking" },
@@ -169,7 +169,7 @@ const MODULES = [
       },
       {
         title: "Tab Booking Details",
-        image: "/images/m03_booking_details.jpg",
+        image: "/newpms-course/images/m03_booking_details.jpg",
         imageCaption: "Booking Details — Expected/Actual Checkin-Checkout, bang Room Booking va Advance Service Lines",
         content: [
           { type: "heading", text: "Tab Booking Details" },
@@ -194,7 +194,7 @@ const MODULES = [
       },
       {
         title: "Advance Service Lines",
-        image: "/images/m03_advance_service.jpg",
+        image: "/newpms-course/images/m03_advance_service.jpg",
         imageCaption: "Advance Service Lines — danh sach dich vu ban kem theo booking: BF, Pick up/Drop off, Promotion",
         content: [
           { type: "heading", text: "Advance Service Lines" },
@@ -229,21 +229,21 @@ const MODULES = [
           { type: "divider", text: "1. Mo Reservation Detail tu Dashboard" },
           { type: "point", icon: "↗️", title: "Nut Expand goc phai", desc: "Tu Management Dashboard, click vao booking tren calendar → popup hien ra → bam nut Expand (mui ten goc phai tren) de mo trang Reservation Detail day du ma khong can thoat khoi Dashboard." },
         ],
-        image1: "/images/m03_quick_expand.jpg",
+        image1: "/newpms-course/images/m03_quick_expand.jpg",
         image1Caption: "Nut Expand goc phai — truy cap nhanh vao Reservation Detail tu Dashboard",
         content2: [
           { type: "divider", text: "2. Thay doi phong truoc Checkin" },
           { type: "point", icon: "✏️", title: "Edit truc tiep tren dong Room Booking", desc: "Khi booking dang o trang thai Confirm (chua checkin), Ops co the click truc tiep vao o Room Number tren tab Booking Details de thay doi phong — khong can dung nut Change Room." },
           { type: "warn", text: "Luu y: Sau khi da Checkin, phai dung nut Change Room tren Folio — khong the edit truc tiep nua." },
         ],
-        image2: "/images/m03_quick_room.jpg",
+        image2: "/newpms-course/images/m03_quick_room.jpg",
         image2Caption: "Edit truc tiep Room Number tren Booking Details — dropdown chon phong trong",
         content3: [
           { type: "divider", text: "3. Them moi Advance Service" },
           { type: "point", icon: "➕", title: "Add a line truc tiep", desc: "Tren tab Booking Details → Advance Service Lines → click Add a line → chon Product tu dropdown → dien Service Start/End, Quantity → luu lai." },
           { type: "point", icon: "🔍", title: "Tim kiem dich vu", desc: "Go ten dich vu vao dropdown de loc nhanh. Neu khong tim thay, chon Search More de xem toan bo danh sach." },
         ],
-        image3: "/images/m03_quick_addline.jpg",
+        image3: "/newpms-course/images/m03_quick_addline.jpg",
         image3Caption: "Add a line — dropdown chon dich vu (BF, minibar, spa...) voi chuc nang Search More",
         content4: [],
         hasDemo: false,
@@ -261,12 +261,19 @@ const MODULES = [
     lessons: [
       {
         title: "Quy định Deposit",
+        image: "/newpms-course/images/m04_deposit_form.jpg",
+        imageCaption: "Form Deposit — chọn Journal (tài khoản OCB) tương ứng với chi nhánh",
         content: [
           { type: "heading", text: "Deposit — Quy định & Xử lý" },
           { type: "point", icon: "⚙️", title: "Cấu hình", desc: "Dựa vào hình thức thuê và đối tượng khách lẻ. Hệ thống ghi nhận deposit vào mã khách lẻ chi nhánh." },
           { type: "point", icon: "📅", title: "Thời điểm", desc: "Deposit chỉ được thêm vào booking tại thời điểm Confirm." },
           { type: "warn", text: "Bắt buộc phải là 100% trước thời điểm Checkin." },
-          { type: "point", icon: "🏦", title: "Journal", desc: "Được cấu hình sẵn theo chi nhánh và hình thức thanh toán. User phải chọn đúng hình thức khi add manual." },
+          { type: "point", icon: "🏦", title: "Journal", desc: "Mỗi chi nhánh sẽ có 1 journal riêng theo từng bank. User phải chọn đúng journal tương ứng với chi nhánh khi add deposit." },
+          { type: "divider", text: "Quy tắc theo đối tượng khách" },
+          { type: "card2", items: [
+            { title: "🚫 Không được phép công nợ\n(Khách lẻ & B2B không có AR Code)", desc: "Hệ thống bắt buộc thanh toán trước khi Checkin.\nBalance phải = 0 trước thời điểm check-in." },
+            { title: "✅ Được phép công nợ\n(B2B có AR Code)", desc: "Hệ thống không yêu cầu thanh toán trước Checkin.\nThanh toán sau theo Payment Terms đã thoả thuận." },
+          ]},
         ],
         hasDemo: true,
       },
@@ -275,8 +282,8 @@ const MODULES = [
         content: [
           { type: "heading", text: "Xử lý Huỷ — Hoàn Deposit" },
           { type: "point", icon: "📜", title: "Nguyên tắc", desc: "Deposit được hoàn theo từng giao dịch khách đã thanh toán, không hỗ trợ điều chỉnh số tiền hoàn." },
-          { type: "point", icon: "💻", title: "Xử lý", desc: "Thực hiện hoàn deposit sẽ do hệ thống xử lý." },
-          { type: "steps", items: ["Thực hiện thao tác Refund deposit", "Chọn giao dịch muốn hoàn lại", "Bấm Confirm", "Thực hiện Cancel reservation để release inventory"] },
+          { type: "point", icon: "💻", title: "Xử lý", desc: "Thực hiện hoàn deposit sẽ reverse lại khoản deposit trước đó." },
+          { type: "steps", items: ["Thực hiện thao tác Refund deposit", "Chọn giao dịch muốn hoàn lại", "Bấm Confirm", "Thực hiện Cancel reservation để release inventory", "Sau khi hoàn thành công, cần điền lại mã phiếu hoàn cho deposit này"] },
         ],
         hasDemo: false,
       },
@@ -534,7 +541,7 @@ function renderContent(items) {
       <div key={i} style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:14 }}>
         {item.items.map((c, j) => (
           <div key={j} style={{ background:"#f1f5f9", borderRadius:10, padding:"14px", border:"1px solid #e2e8f0" }}>
-            <div style={{ fontWeight:700, color:"#1e293b", fontSize:13, marginBottom:6 }}>{c.title}</div>
+            <div style={{ fontWeight:700, color:"#1e293b", fontSize:13, marginBottom:6, whiteSpace:"pre-line" }}>{c.title}</div>
             <div style={{ color:"#64748b", fontSize:12.5, lineHeight:1.6, whiteSpace:"pre-line" }}>{c.desc}</div>
           </div>
         ))}
@@ -546,19 +553,27 @@ function renderContent(items) {
         <div style={{ color:"#6b7280", fontSize:13, lineHeight:1.5 }}>{item.desc}</div>
       </div>
     );
+    if (item.type === "journalList") return (
+      <div key={i} style={{ marginBottom:14, background:"#f0fdf4", borderRadius:10, border:"1px solid #bbf7d0", padding:"14px 16px" }}>
+        {item.items.map((journal, j) => (
+          <div key={j} style={{ display:"flex", alignItems:"center", gap:10, padding:"7px 0", borderBottom: j < item.items.length - 1 ? "1px solid #dcfce7" : "none" }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background:"#10b981", flexShrink:0 }} />
+            <span style={{ fontSize:13, color:"#065f46", fontWeight:500 }}>{journal}</span>
+          </div>
+        ))}
+      </div>
+    );
     return null;
   });
 }
 
 export default function App() {
-  const [view, setView] = useState("home"); // home | module | lesson
+  const [view, setView] = useState("home");
   const [activeModule, setActiveModule] = useState(null);
   const [activeLesson, setActiveLesson] = useState(0);
 
-  // HOME
   if (view === "home") return (
     <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
-      {/* Header */}
       <div style={{ background:"#0f172a", padding:"0 32px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
         <div style={{ display:"flex", alignItems:"center", gap:10 }}>
           <div style={{ width:32, height:32, background:"linear-gradient(135deg,#3b82f6,#06b6d4)", borderRadius:8, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>⚡</div>
@@ -570,14 +585,12 @@ export default function App() {
         <div style={{ fontSize:12, color:"#64748b" }}>{MODULES.length} module · {MODULES.reduce((a,m) => a+m.lessons.length, 0)} bài học</div>
       </div>
 
-      {/* Hero */}
       <div style={{ background:"linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%)", padding:"48px 32px 40px", textAlign:"center" }}>
         <div style={{ fontSize:36, marginBottom:12 }}>🎓</div>
         <h1 style={{ color:"white", fontSize:28, fontWeight:800, marginBottom:8, letterSpacing:"-0.5px" }}>Training NewPMS Odoo 18</h1>
         <p style={{ color:"#94a3b8", fontSize:15, maxWidth:480, margin:"0 auto" }}>Hướng dẫn vận hành hệ thống quản lý khách sạn — dành cho team Front Office & Vận hành</p>
       </div>
 
-      {/* Grid */}
       <div style={{ maxWidth:960, margin:"0 auto", padding:"32px 24px" }}>
         <div style={{ fontSize:13, color:"#64748b", fontWeight:600, letterSpacing:"0.5px", marginBottom:16, textTransform:"uppercase" }}>Chọn module để bắt đầu</div>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:16 }}>
@@ -607,13 +620,11 @@ export default function App() {
     </div>
   );
 
-  // MODULE VIEW
   const mod = activeModule;
   const lesson = mod.lessons[activeLesson];
 
   return (
     <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
-      {/* Header */}
       <div style={{ background:"#0f172a", padding:"0 24px", height:56, display:"flex", alignItems:"center", gap:12, position:"sticky", top:0, zIndex:10 }}>
         <button onClick={() => setView("home")} style={{ background:"rgba(255,255,255,0.08)", border:"none", color:"#94a3b8", padding:"6px 12px", borderRadius:6, cursor:"pointer", fontSize:13, display:"flex", alignItems:"center", gap:6 }}>
           ← Trang chủ
@@ -623,7 +634,6 @@ export default function App() {
       </div>
 
       <div style={{ display:"flex", maxWidth:1100, margin:"0 auto", padding:"24px 20px", gap:24 }}>
-        {/* Sidebar lessons */}
         <div style={{ width:240, flexShrink:0 }}>
           <div style={{ background:"white", borderRadius:12, border:"1px solid #e2e8f0", overflow:"hidden" }}>
             <div style={{ padding:"14px 16px", borderBottom:"1px solid #e2e8f0", background:`${mod.color}10` }}>
@@ -646,7 +656,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* Nav buttons */}
           <div style={{ display:"flex", gap:8, marginTop:12 }}>
             <button onClick={() => setActiveLesson(p => Math.max(0,p-1))} disabled={activeLesson===0}
               style={{ flex:1, padding:"8px", borderRadius:8, border:"1px solid #e2e8f0", background:"white", cursor:activeLesson===0?"not-allowed":"pointer", color:activeLesson===0?"#cbd5e1":"#475569", fontSize:13 }}>
@@ -659,41 +668,39 @@ export default function App() {
           </div>
         </div>
 
-        {/* Content */}
         <div style={{ flex:1, minWidth:0 }}>
           <div style={{ background:"white", borderRadius:14, border:"1px solid #e2e8f0", padding:"28px 32px", boxShadow:"0 1px 3px rgba(0,0,0,0.05)" }}>
             {lesson.image && (
-            <div style={{ marginBottom:20 }}>
-              <img src={lesson.image} alt={lesson.imageCaption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
-              {lesson.imageCaption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.imageCaption}</div>}
-            </div>
-          )}
-          {renderContent(lesson.content)}
-          {lesson.image1 && (
-            <div style={{ margin:"16px 0" }}>
-              <img src={lesson.image1} alt={lesson.image1Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
-              {lesson.image1Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image1Caption}</div>}
-            </div>
-          )}
-          {lesson.content2 && renderContent(lesson.content2)}
-          {lesson.image2 && (
-            <div style={{ margin:"16px 0" }}>
-              <img src={lesson.image2} alt={lesson.image2Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
-              {lesson.image2Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image2Caption}</div>}
-            </div>
-          )}
-          {lesson.content3 && renderContent(lesson.content3)}
-          {lesson.image3 && (
-            <div style={{ margin:"16px 0" }}>
-              <img src={lesson.image3} alt={lesson.image3Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
-              {lesson.image3Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image3Caption}</div>}
-            </div>
-          )}
-          {lesson.content4 && renderContent(lesson.content4)}
+              <div style={{ marginBottom:20 }}>
+                <img src={lesson.image} alt={lesson.imageCaption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
+                {lesson.imageCaption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.imageCaption}</div>}
+              </div>
+            )}
+            {renderContent(lesson.content)}
+            {lesson.image1 && (
+              <div style={{ margin:"16px 0" }}>
+                <img src={lesson.image1} alt={lesson.image1Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
+                {lesson.image1Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image1Caption}</div>}
+              </div>
+            )}
+            {lesson.content2 && renderContent(lesson.content2)}
+            {lesson.image2 && (
+              <div style={{ margin:"16px 0" }}>
+                <img src={lesson.image2} alt={lesson.image2Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
+                {lesson.image2Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image2Caption}</div>}
+              </div>
+            )}
+            {lesson.content3 && renderContent(lesson.content3)}
+            {lesson.image3 && (
+              <div style={{ margin:"16px 0" }}>
+                <img src={lesson.image3} alt={lesson.image3Caption || ""} style={{ width:"100%", borderRadius:10, border:"1px solid #e2e8f0" }} />
+                {lesson.image3Caption && <div style={{ fontSize:11, color:"#94a3b8", marginTop:6, textAlign:"center", fontStyle:"italic" }}>{lesson.image3Caption}</div>}
+              </div>
+            )}
+            {lesson.content4 && renderContent(lesson.content4)}
             {lesson.hasDemo && <VideoPlaceholder />}
           </div>
 
-          {/* Bottom nav */}
           <div style={{ display:"flex", justifyContent:"space-between", marginTop:16 }}>
             <div style={{ fontSize:12, color:"#94a3b8" }}>Bài {activeLesson+1} / {mod.lessons.length}</div>
             {activeLesson < mod.lessons.length-1
