@@ -299,15 +299,22 @@ const MODULES = [
     lessons: [
       {
         title: "Xử lý No Show",
+        image: "/newpms-course/images/m05_noshow_form.jpg",
+        imageCaption: "Form No Show — chọn loại No Show, nhập phí và Guest Arrival Date (nếu Partial)",
         content: [
           { type: "heading", text: "Xử lý No Show" },
           { type: "point", icon: "🔍", title: "Xác định", desc: "Ops cần xác định khách no show 1 đêm hay toàn bộ hành trình." },
-          { type: "point", icon: "💳", title: "Thao tác", desc: "Sử dụng charge phí no show để xử lý." },
-          { type: "point", icon: "📅", title: "Điều chỉnh", desc: "Điều chỉnh giảm tiền room cho phù hợp sau khi xác định phí no show." },
+          { type: "point", icon: "💳", title: "Thao tác", desc: "Bấm nút No Show trên booking → nhập phí cần charge khách → chọn ngày Arrival mới cho khách nếu có." },
+          { type: "point", icon: "📅", title: "Điều chỉnh", desc: "Giảm tiền room cho phù hợp sau khi xác định phí no show." },
           { type: "divider", text: "Các loại No Show" },
           { type: "card2", items: [
-            { title: "Fully No Show", desc: "Chọn Mark Booking Fully No Show → nhập No-Show Fee → Confirm → Night Audit ghi nhận revenue và đối soát với deposit." },
-            { title: "Partial No Show", desc: "Chọn Mark Booking Partial No Show → nhập No-Show Fee + Guest Arrival Date → hệ thống tách booking thành 2 phần." },
+            { title: "Fully No Show", desc: "Chọn Mark Booking Fully No Show → nhập No-Show Fee → Confirm → Night Audit ghi nhận revenue và đối soát với deposit đã có." },
+            { title: "Partial No Show", desc: "Chọn Mark Booking Partial No Show → nhập No-Show Fee + Guest Arrival Date → hệ thống tách thành 2 booking." },
+          ]},
+          { type: "divider", text: "Sau khi tách — Partial No Show" },
+          { type: "card2", items: [
+            { title: "📌 Booking No Show", desc: "Ghi nhận phí no show và khoản deposit được cắt qua tương ứng." },
+            { title: "📌 Booking còn lại", desc: "Được điều chỉnh ngày checkin theo Arrival Date mới và phần deposit còn lại." },
           ]},
         ],
         hasDemo: false,
