@@ -225,6 +225,8 @@ const MODULES = [
       },
       {
         title: "Folio — Tính năng & Quy tắc",
+        image: "/newpms-course/images/m03_folio_main.jpg",
+        imageCaption: "Folio — thông tin chính, action buttons và tab Services/Billings",
         imageCaption: "Folio — thông tin chính, action buttons và tab Services/Billings",
         content: [
           { type: "heading", text: "Folio — Tính năng & Quy tắc" },
@@ -258,6 +260,8 @@ const MODULES = [
           { type: "point", icon: "➕", title: "Advance Service Lines", desc: "Dịch vụ kèm theo: Charge, Description, Category, Quantity, Unit Price, Service Start/End, Taxes, Disc.%, Subtotal." },
           { type: "divider", text: "Tab Billings" },
         ],
+        image2: "/newpms-course/images/m03_folio_billings.jpg",
+        image2Caption: "Tab Billings — Deposit Transactions & Payment Transactions",
         content3: [
           { type: "point", icon: "📊", title: "Billings", desc: "Toàn bộ giao dịch tài chính của folio — bao gồm Deposit Transactions và Payment Transactions." },
         ],
@@ -302,6 +306,8 @@ const MODULES = [
     lessons: [
       {
         title: "Quy định Deposit",
+        image: "/newpms-course/images/m04_deposit_form.jpg",
+        imageCaption: "Form Deposit — chọn Journal (tài khoản OCB) tương ứng với chi nhánh",
         imageCaption: "Form Deposit — chọn Journal (tài khoản OCB) tương ứng với chi nhánh",
         content: [
           { type: "heading", text: "Deposit — Quy định & Xử lý" },
@@ -319,6 +325,8 @@ const MODULES = [
       },
       {
         title: "Huỷ & Hoàn Deposit",
+        image: "/newpms-course/images/m04_refund_deposit.jpg",
+        imageCaption: "Form Refund Deposit — chọn giao dịch deposit, hiển thị Amount và Deposit Account",
         content: [
           { type: "heading", text: "Xử lý Huỷ — Hoàn Deposit" },
           { type: "point", icon: "📜", title: "Nguyên tắc", desc: "Deposit được hoàn theo từng giao dịch khách đã thanh toán, không hỗ trợ điều chỉnh số tiền hoàn." },
@@ -401,7 +409,7 @@ const MODULES = [
   },
   {
     id: 7,
-    title: "Charge & Payment",
+    title: "Charge - Payment - Deposit",
     subtitle: "Debit, Credit & Ghi nhận dịch vụ",
     icon: "💳",
     color: "#6366f1",
@@ -421,6 +429,8 @@ const MODULES = [
       },
       {
         title: "Ghi nhận dịch vụ phát sinh",
+        image: "/newpms-course/images/m07_folio_services.jpg",
+        imageCaption: "Advance Service Lines trên Folio — TTD Ăn sáng, Pick up/Drop off, Minibar, Spa với Service Start/End riêng từng dịch vụ",
         content: [
           { type: "heading", text: "Charge & Payment" },
           { type: "intro", text: "Cách ghi nhận dịch vụ phát sinh lên booking:" },
@@ -435,7 +445,8 @@ const MODULES = [
       },
       {
         title: "Tab Billing trong Folio",
-        imageCaption: "Tab Billings trong Folio — Deposit Transactions & Payment Transactions",
+        image: "/newpms-course/images/m07_billing_tab.jpg",
+        imageCaption: "Tab Billings — Deposit Transactions & Payment Transactions với đầy đủ Journal Entry, Line Type, Account, Debit/Credit/Balance",
         content: [
           { type: "heading", text: "Tab Billing — Folio" },
           { type: "intro", text: "Trong Folio có 2 tab: Services và Billings. Tab Billings chứa toàn bộ các giao dịch tài chính của khách, chia làm 2 phần rõ ràng." },
@@ -455,6 +466,9 @@ const MODULES = [
             { title: "💳 Payment Transactions", desc: "Giao dịch payment (sau checkin) + các charge được cấn trừ vào payment.\nDùng để theo dõi các khoản thanh toán phát sinh trong kỳ lưu trú." },
           ]},
         ],
+        image2: "/newpms-course/images/m07_billing_tab2.jpg",
+        image2Caption: "Tab Billings chi tiết — các dòng Invoice ghi nhận Revenue, Tax theo từng dịch vụ và các dòng POCB deposit/payment",
+        content3: [],
         hasDemo: false,
       },
     ],
@@ -481,7 +495,9 @@ const MODULES = [
         hasDemo: false,
       },
       {
-        title: "Night Audit đêm 1",
+        title: "Night Audit — Các bước chi tiết",
+        image: "/newpms-course/images/m08_night_audit_dem1.jpg",
+        imageCaption: "Tab Billings sau Night Audit đêm 1 — Deposit cấn trừ với Invoice tiền phòng (Revenue + Tax + Receivable)",
         content: [
           { type: "heading", text: "Night Audit — Đêm Lưu Trú 1" },
           { type: "point", icon: "📄", title: "Ghi nhận Doanh thu", desc: "Doanh thu phát sinh trong 1 ngày được ghi nhận là 01 Invoice." },
@@ -495,7 +511,8 @@ const MODULES = [
       },
       {
         title: "Nguyên tắc chạy Night Audit",
-        imageCaption: "Màn hình Night Audit — các bước Preparation, Execution và Roll Date",
+        image: "/newpms-course/images/m08_night_audit_steps.jpg",
+        imageCaption: "Màn hình Night Audit — các bước Preparation và Execution đều Complete",
         content: [
           { type: "heading", text: "Night Audit — Nguyên tắc" },
           { type: "point", icon: "🕐", title: "Khung thời gian", desc: "Mỗi chi nhánh có thể cấu hình khung thời gian chạy Night Audit phù hợp. Night Audit chỉ được chạy 1 lần/ngày vì đây là hành động chốt doanh thu phát sinh trong 1 ngày." },
@@ -508,6 +525,8 @@ const MODULES = [
           { type: "point", icon: "📊", title: "Tổng hợp doanh thu", desc: "Revenue by Department (Room, F&B, Spa, Other) và Payment Methods (Cash, Credit Card, Bank Transfer, City Ledger)." },
           { type: "divider", text: "Báo cáo sau khi chạy" },
         ],
+        image2: "/newpms-course/images/m08_night_audit_log.jpg",
+        image2Caption: "Night Audit Log — trạng thái Success, các bước Pass 100% và file ZIP báo cáo tổng hợp",
         content3: [
           { type: "point", icon: "📁", title: "Log & Report", desc: "Hệ thống generate: Daily Revenue Report, Occupancy Report (số phòng available, sold, OOO), Payment Summary, Cashier Balance Report." },
           { type: "point", icon: "🗂️", title: "Night Audit Log", desc: "Mỗi chi nhánh sau khi chạy thành công đều được ghi nhận lại log, các hoá đơn đã phát sinh và file ZIP báo cáo tổng hợp — tiện lợi cho tra cứu và lưu trữ." },
@@ -565,6 +584,8 @@ const MODULES = [
     lessons: [
       {
         title: "Fixed Charge là gì?",
+        image: "/newpms-course/images/m10_fixed_charge.jpg",
+        imageCaption: "Folio Long Stay — cột Frequency (Monthly) và Fixed Charge Day xác định ngày ghi nhận cố định hàng tháng",
         content: [
           { type: "heading", text: "Fixed Charge — Phụ phí Cố định" },
           { type: "intro", text: "Phụ phí Cố định (Fixed Charges) được dùng để thiết lập trước các khoản ghi nợ tự động trên một đặt phòng — thường áp dụng cho khách Long Stay." },
@@ -598,7 +619,8 @@ const MODULES = [
     lessons: [
       {
         title: "Folio cho Booking B2B",
-        imageCaption: "Folio B2B — Billing To gán về công ty, Booker là thông tin công ty",
+        image: "/newpms-course/images/m11_booking_b2b.jpg",
+        imageCaption: "Booking B2B — Booker là công ty, Source: B2B Corporate, VAT info đầy đủ",
         content: [
           { type: "heading", text: "Xử lý Folio cho Booking B2B" },
           { type: "divider", text: "Tạo Booking B2B" },
@@ -612,11 +634,15 @@ const MODULES = [
           ]},
           { type: "warn", text: "Không được post dịch vụ khách tự chi trả vào folio công ty — sẽ gây sai lệch công nợ và hoá đơn VAT." },
         ],
+        image2: "/newpms-course/images/m11_folio_b2b.jpg",
+        image2Caption: "Folio B2B — Billing To gán về công ty TAIWAN BRAKE TECHNOLOGY CORP đầy đủ thông tin VAT",
+        content3: [],
         hasDemo: true,
       },
       {
         title: "Tách gộp Folio",
-        imageCaption: "Folio Transfer — chọn Destination Folio và các charge cần transfer",
+        image: "/newpms-course/images/m11_folio_transfer.jpg",
+        imageCaption: "Form Folio Transfer — Source/Destination Folio, Transfer Details và danh sách charge cần chuyển",
         content: [
           { type: "heading", text: "Tách gộp Folio — Split & Transfer" },
           { type: "divider", text: "Điều kiện Transfer" },
@@ -638,6 +664,9 @@ const MODULES = [
             { title: "Transfer đi nhóm", desc: "1. Transfer 1 phần charge qua folio booking khác\n2. Transfer ngược về nếu cần" },
           ]},
         ],
+        image2: "/newpms-course/images/m11_folio_transfer_result.jpg",
+        image2Caption: "Folio đích sau khi transfer — các dòng charge hiển thị 'Transferred from Folio' kèm lý do chuyển",
+        content3: [],
         hasDemo: true,
       },
     ],
@@ -752,7 +781,7 @@ export default function App() {
       <div style={{ background:"linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%)", padding:"48px 32px 40px", textAlign:"center" }}>
         <div style={{ fontSize:36, marginBottom:12 }}>🎓</div>
         <h1 style={{ color:"white", fontSize:28, fontWeight:800, marginBottom:8, letterSpacing:"-0.5px" }}>Training NewPMS Odoo 18</h1>
-        <p style={{ color:"#94a3b8", fontSize:15, maxWidth:480, margin:"0 auto" }}>Hướng dẫn vận hành hệ thống quản lý khách sạn — dành cho team Front Office & Vận hành</p>
+        <p style={{ color:"#94a3b8", fontSize:15, maxWidth:480, margin:"0 auto" }}>Hướng dẫn vận hành làm quen tính năng mới</p>
       </div>
 
       <div style={{ maxWidth:960, margin:"0 auto", padding:"32px 24px" }}>
