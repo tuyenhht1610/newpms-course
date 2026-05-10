@@ -342,6 +342,21 @@ const MODULES = [
         ],
         hasDemo: true,
       },
+      {
+        title: "Quy trình Check-out",
+        content: [
+          { type: "heading", text: "Quy trình Check-out" },
+          { type: "steps", items: [
+            "Chuẩn bị (Departure Day) — Ops tải báo cáo Departure để nắm danh sách khách checkout trong ngày.",
+            "Khách xuống thực hiện trả phòng.",
+            "Ops mở booking để review Folio và balance còn lại.",
+            "Khách thanh toán các khoản còn nợ.",
+            "Hệ thống ghi nhận payment.",
+            "Ops thực hiện Checkout — hệ thống lưu Actual Checkout và kết thúc lưu trú.",
+          ]},
+        ],
+        hasDemo: false,
+      },
     ],
   },
   {
