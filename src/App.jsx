@@ -760,10 +760,296 @@ function renderContent(items) {
   });
 }
 
+const HOMEWORK_DATA = [
+  { id:1, title:"Tạo Mới Đặt Phòng", group:"DIRECT", groupColor:"#3b82f6", time:"5 phút", scenario:"Khách walk-in / đặt qua điện thoại muốn đặt 01 phòng, 2 người lớn, LOS = 1D. Source = Walkin | Rate Code = 0 | Via = OPS", steps:[{id:1,title:"Báo giá phòng",detail:"Vào Management dashboard → Chọn phòng → Chọn ngày CI/CO (LOS 1D)"},{id:2,title:"Chọn loại phòng & tạo reservation",detail:"Click vào loại phòng mong muốn → Click 'Create Booking'"},{id:3,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:4,title:"Nhập thông tin Booker + Guest",detail:"Nhập Booker Information + Guest Information"},{id:5,title:"Nhập thông tin thống kê",detail:"Source = Walkin | Via = OPS"},{id:6,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:7,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:8,title:"Special Request",detail:"Nhập Special Request code. Ví dụ: LCO = Late Check Out"},{id:9,title:"In Reg Card",detail:"In Reg Card - ghi nhận: Số khách, Loại phòng"}]},
+  { id:2, title:"Quản Lý Folio & Đặt Cọc", group:"DIRECT", groupColor:"#3b82f6", time:"5 phút", scenario:"Khách thanh toán tiền cọc trước. Nhận cọc bằng BANK. Deposit = 3,000,000 VND (BANK)", steps:[{id:1,title:"Chọn loại phòng & tạo reservation",detail:"Click vào loại phòng mong muốn → Click 'Create Booking'"},{id:2,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:3,title:"Nhập thông tin Booker + Guest",detail:"Nhập Booker Information + Guest Information"},{id:4,title:"Nhập thông tin thống kê",detail:"Source = Walkin | Via = OPS"},{id:5,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:6,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:7,title:"Ghi nhận Deposit",detail:"Nhấn nút Deposit → Nhập deposit → Chọn Journal → Deposit type"}]},
+  { id:3, title:"Check-in & Nhận Phòng", group:"DIRECT", groupColor:"#3b82f6", time:"5 phút", scenario:"Sử dụng reservation đã tạo ở Bài 1. Khách đến làm thủ tục check-in. Khai báo thông tin khách, phân phòng và hoàn tất check-in.", steps:[{id:1,title:"Nhập thông tin ID khách chính",detail:"Email/SĐT, ID (Passport, CCCD), Address"},{id:2,title:"Add Sharer / Thêm khách phụ",detail:"Add và link profiles của sharer"},{id:3,title:"Thêm yêu cầu Extra Bed",detail:"Add Extra Bed trong mục Service"},{id:4,title:"Ghi nhận Deposit hiện tại",detail:"Vào tab Deposit detail → Ghi nhận Balance"},{id:5,title:"Assign Room",detail:"Phân phòng phù hợp"},{id:6,title:"Move Room (cùng Room Type)",detail:"Thực hiện Move Room: New Room No, Reason"},{id:7,title:"Checkin",detail:"Thực hiện checkin chính thức"},{id:8,title:"In Reg Card",detail:"In Reg Card - ghi nhận: Số khách, Loại phòng"},{id:9,title:"Kiểm tra folio sau checkin",detail:"Ghi nhận RC vào folio sau khi checkin. Kiểm tra Deposit trong folio"}]},
+  { id:4, title:"Hoàn Cọc & Cancel", group:"DIRECT", groupColor:"#3b82f6", time:"10 phút", scenario:"Khách đặt qua điện thoại muốn đặt 01 phòng, 2 người lớn, LOS = 1D. Khách liên hệ muốn hủy đặt phòng. Hoàn lại deposit. Source = Internal reservation | Via = BOD", steps:[{id:1,title:"Chọn loại phòng & tạo reservation",detail:"Click vào loại phòng mong muốn → Click 'Create Booking'"},{id:2,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:3,title:"Nhập thông tin Booker + Guest",detail:"Nhập Booker Information + Guest Information"},{id:4,title:"Nhập thông tin thống kê",detail:"Source = Internal reservation | Via = BOD"},{id:5,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:6,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:7,title:"Ghi nhận Deposit",detail:"Nhấn nút Deposit → Nhập deposit → Chọn Journal → Deposit type"},{id:8,title:"Khách liên hệ hủy phòng",detail:"Kiểm tra policy hủy phòng → cho phép"},{id:9,title:"Refund deposit",detail:"Nhấn nút Refund deposit → Chọn deposit muốn hoàn → Xác nhận"},{id:10,title:"Cancel reservation",detail:"Nhấn Cancel"},{id:11,title:"Kiểm tra reservation",detail:"Kiểm tra tình trạng phòng trống sau cancel. Kiểm tra trạng thái reservation"}]},
+  { id:5, title:"No Show", group:"DIRECT", groupColor:"#3b82f6", time:"10 phút", scenario:"Khách đặt qua điện thoại, deposit cho booking. Ngày checkin khách no show, xử lý thu phí. Source = Walkin | Via = OPS", steps:[{id:1,title:"Chọn loại phòng & tạo reservation",detail:"Click vào loại phòng mong muốn → Click 'Create Booking'"},{id:2,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:3,title:"Nhập thông tin Booker + Guest",detail:"Nhập Booker Information + Guest Information"},{id:4,title:"Nhập thông tin thống kê",detail:"Source = Walkin | Via = OPS"},{id:5,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:6,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:7,title:"Ghi nhận Deposit",detail:"Nhấn nút Deposit → Nhập deposit → Chọn Journal → Deposit type"},{id:8,title:"Ngày checkin",detail:"Kiểm tra tình trạng reservation. Khách no show"},{id:9,title:"Xử lý no show",detail:"Mark no show → Chọn no show full → Nhập no show fee → Xác nhận"},{id:10,title:"Kiểm tra reservation",detail:"Kiểm tra trạng thái reservation và no show fee"}]},
+  { id:6, title:"Dịch Vụ Trong Lưu Trú & Transfer", group:"DIRECT", groupColor:"#3b82f6", time:"10 phút", scenario:"Minibar: Coke x2 | Folio 2 = Khách phụ | Split 50% - thanh toán Visa", steps:[{id:1,title:"Post Minibar",detail:"Minibar Room 01 - Folio 1: Post Articles - Coke x2"},{id:2,title:"Tạo Folio 2",detail:"Create Folio 2 → Name = Khách phụ"},{id:3,title:"Split & Transfer sang Folio 2",detail:"Split 50% charge Minibar → Transfer 50% sang Folio 2"},{id:4,title:"Thanh toán Folio 2 bằng Bank",detail:"Paid Folio 2 by Bank → In và ghi nhận receipt"},{id:5,title:"Chạy Night Audit",detail:"Chạy night audit"},{id:6,title:"Ghi nhận Balance Folio 2",detail:"Vào tab Folio → Balance Folio 2 = ___"},{id:7,title:"Kiểm tra tổng Balance",detail:"Ghi nhận Balance tổng tất cả folio"},{id:8,title:"In Billing Folio",detail:"In Billing Folio để kiểm tra trước check-out"},{id:9,title:"Ghi nhận số dư Folio 1",detail:"Folio Balance sau khi in = ___"},{id:10,title:"Thanh toán Folio 1 bằng Bank",detail:"Post payment Folio 1 by Bank → Ghi nhận receipt no#"},{id:11,title:"Kiểm tra tổng Balance",detail:"Ghi nhận Balance tổng tất cả folio = ___"}]},
+  { id:7, title:"Payment & Check-out", group:"DIRECT", groupColor:"#3b82f6", time:"5 phút", scenario:"Khách chuẩn bị trả phòng. Yêu cầu: Tất cả folio phải Balance = 0 trước khi Check-out.", steps:[{id:1,title:"Post LCO",detail:"LCO Room 01 - Folio 2. Ghi nhận: Tiền phòng, Minibar, Phí LCO"},{id:2,title:"Ghi nhận Balance từng Folio",detail:"Ghi nhận Balance tất cả folio: Folio 1, 2, 3, 4 và Total Balance"},{id:3,title:"Transfer Charge Folio 2 sang Folio 1",detail:"Transfer charge LCO từ Folio 2 sang Folio 1"},{id:4,title:"Post Payment Folio 1",detail:"Thanh toán Folio 1 → Ghi nhận receipt no#"},{id:5,title:"Kiểm tra Balance = 0",detail:"Xác nhận tất cả folio Balance = 0 trước check-out"},{id:6,title:"Thực hiện Check-out",detail:"Click Check-out → Ghi nhận Date/Time check-out"},{id:7,title:"Kiểm tra trạng thái phòng sau CO",detail:"Kiểm tra màu trạng thái phòng sau check-out"}]},
+  { id:8, title:"Tạo Mới Đặt Phòng B2B", group:"B2B", groupColor:"#8b5cf6", time:"10 phút", scenario:"Công ty điện thoại muốn đặt 01 phòng, 2 người lớn, có BF, LOS = 1D. Source = B2B Corp | Via = Agent", steps:[{id:1,title:"Báo giá phòng cho công ty",detail:"Vào Management dashboard → Chọn phòng → Chọn ngày CI/CO → Chọn gói giá"},{id:2,title:"Chọn loại phòng & tạo reservation",detail:"Vào Management dashboard → Chọn BF → Click 'Create Booking'"},{id:3,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:4,title:"Nhập thông tin Booker Company + Guest",detail:"Nhập Booker = [CTY] + Guest Information"},{id:5,title:"Nhập thông tin thống kê",detail:"Source = B2B Corp | Via = Agent | Company VAT"},{id:6,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:7,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:8,title:"Special Request",detail:"Nhập Special Request: CÔNG TY THANH TOÁN OPS KHÔNG THU"},{id:9,title:"Tải confirmation",detail:"Bấm in booking confirmation gửi cho công ty"}]},
+  { id:9, title:"Check-in B2B & Nhận Phòng", group:"B2B", groupColor:"#8b5cf6", time:"5 phút", scenario:"Sử dụng reservation đã tạo ở Bài 8. Hoàn tất check-in và không cần deposit.", steps:[{id:1,title:"Nhập thông tin ID khách chính",detail:"Email/SĐT, ID (Passport, CCCD), Address"},{id:2,title:"Add Sharer / Thêm khách phụ",detail:"Add và link profiles của sharer"},{id:3,title:"Kiểm tra Deposit",detail:"Công ty được phép công nợ sẽ không cần deposit"},{id:4,title:"Checkin",detail:"Thực hiện checkin chính thức"},{id:5,title:"Kiểm tra folio sau checkin",detail:"Ghi nhận RC và BF vào folio. Billing to = [CTY]"},{id:6,title:"Night Audit",detail:"Chạy night audit"},{id:7,title:"Ghi nhận Journal",detail:"Ghi nhận txn codes và giá các gói: Room, Package BF"}]},
+  { id:10, title:"Dịch Vụ Khách Tự Chi Trả", group:"B2B", groupColor:"#8b5cf6", time:"5 phút", scenario:"Minibar: Coke x2 | Folio 2 = Khách tự chi trả | Thanh toán Visa", steps:[{id:1,title:"Kiểm tra folio do công ty trả",detail:"Kiểm tra thông tin chi trả. Billing to = [Company]"},{id:2,title:"Tạo folio 2 cho dịch vụ khách tự chi trả",detail:"Click Create folio → Name = Main guest. Billing to = [Guest]"},{id:3,title:"Post Minibar",detail:"Minibar Room 01 - Folio 1: Post Articles - Coke x2"},{id:4,title:"Thanh toán Folio 2 bằng Visa",detail:"Paid Folio 2 by Card → In và ghi nhận receipt"},{id:5,title:"Ghi nhận Balance Folio 2",detail:"Vào tab Folio → Balance Folio 2 = ___"},{id:6,title:"Kiểm tra tổng Balance",detail:"Ghi nhận Balance tổng tất cả folio"},{id:7,title:"Thực hiện Check-out",detail:"Click Check-out → Xác nhận Folio Balance > 0 → Ghi nhận Date/Time"},{id:8,title:"Kiểm tra trạng thái phòng sau CO",detail:"Kiểm tra màu trạng thái phòng sau check-out"}]},
+  { id:11, title:"Checkout & Ghi Nhận Công Nợ", group:"B2B", groupColor:"#8b5cf6", time:"10 phút", scenario:"Kiểm tra số dư công nợ và in Journal Report. Kiểm tra report Aged Receivable.", steps:[{id:1,title:"Ghi nhận Balance Folio",detail:"Ghi nhận Balance folio: Folio 1, Folio 2"},{id:2,title:"Thực hiện Check-out",detail:"Click Check-out → Xác nhận Folio Balance > 0 → Ghi nhận Date/Time"},{id:3,title:"Kiểm tra trạng thái phòng sau CO",detail:"Kiểm tra màu trạng thái phòng sau check-out"},{id:4,title:"Kiểm tra hạn mức công nợ mới",detail:"Vào profile công ty kiểm tra hạn mức công nợ. Credit limit = ___"},{id:5,title:"Kiểm tra Invoice và Sales",detail:"Ghi nhận Folio No# vừa phát sinh. Invoice ghi nhận Invoice No#"},{id:6,title:"Kiểm tra Aged Receivable",detail:"Vào Menu Accounting → Report = Aged Receivable → Tìm công ty"}]},
+  { id:12, title:"Thanh Toán Invoice - Công Nợ", group:"B2B", groupColor:"#8b5cf6", time:"10 phút", scenario:"Post payment - Thanh toán hoá đơn. Ghi nhận Balance AR mới.", steps:[{id:1,title:"Tìm profile công ty cần thanh toán",detail:"Tìm Profile công ty = [CTY]"},{id:2,title:"Kiểm tra hạn mức công nợ",detail:"Vào profile công ty kiểm tra hạn mức công nợ"},{id:3,title:"Tìm Invoice cần thanh toán",detail:"Vào mục Invoice → Tìm invoice = unpaid → Kiểm tra đúng Folio - Reservation"},{id:4,title:"Thực hiện Post payment",detail:"Chọn invoice → Nhập giá trị thanh toán → Chọn Journal"},{id:5,title:"Kiểm tra trạng thái invoice",detail:"Trạng thái = Paid"},{id:6,title:"Kiểm tra hạn mức công nợ mới",detail:"Kiểm tra hạn mức công nợ được update. Credit limit = ___"},{id:7,title:"Kiểm tra Aged Receivable",detail:"Vào Menu Accounting → Report = Aged Receivable → Tìm công ty"}]},
+  { id:13, title:"Night Audit", group:"NIGHT AUDIT", groupColor:"#0f6e56", time:"30 phút", scenario:"Tạo mới reservation, chạy night audit và ghi nhận doanh thu.", steps:[{id:1,title:"Chọn loại phòng & tạo reservation",detail:"Click vào loại phòng mong muốn, LOS = 1D → Click 'Create Booking'"},{id:2,title:"Khai báo số lượng khách",detail:"Số lượng khách: 02 Adults"},{id:3,title:"Nhập thông tin Booker + Guest",detail:"Nhập Booker Information + Guest Information"},{id:4,title:"Nhập thông tin thống kê",detail:"Source = Walkin | Via = OPS"},{id:5,title:"Confirm Booking",detail:"Click 'Save' ở góc trái"},{id:6,title:"Ghi nhận Reservation ID",detail:"Ghi nhận: Reservation #, Tổng tiền booking, Tổng số đêm ở"},{id:7,title:"Ghi nhận Deposit",detail:"Nhấn nút Deposit → Nhập deposit → Chọn Journal → Deposit type"},{id:8,title:"Checkin",detail:"Thực hiện checkin chính thức"},{id:9,title:"Kiểm tra folio sau checkin",detail:"Ghi nhận RC vào folio. Kiểm tra Deposit trong folio"},{id:10,title:"Post Minibar",detail:"Minibar Room 01 - Folio 1: Post Articles - Aqua x2"},{id:11,title:"Thanh toán Folio 1 bằng Bank",detail:"Post payment Folio 1 by Bank → Ghi nhận receipt no#"},{id:12,title:"Kiểm tra tổng Balance",detail:"Ghi nhận Balance tổng tất cả folio"},{id:13,title:"Chạy Night Audit",detail:"Run night audit → Nếu có lỗi xảy ra thực hiện fix và chạy tiếp"},{id:14,title:"Ghi nhận Journal đêm đầu tiên",detail:"Ghi nhận txn codes và giá tiền phòng đêm đầu, minibar: Room, Minibar"},{id:15,title:"Download report zip",detail:"Thực hiện download report"},{id:16,title:"Kiểm tra Balance = 0",detail:"Xác nhận tất cả folio Balance = 0 trước check-out"},{id:17,title:"Thực hiện Check-out",detail:"Click Check-out → Ghi nhận Date/Time check-out"}]},
+  { id:14, title:"Báo Cáo Finance", group:"FINANCE", groupColor:"#b45309", time:"30 phút", scenario:"Kiểm tra các báo cáo Finance.", steps:[{id:1,title:"Kiểm tra lại số dư nợ từ FO",detail:"Kiểm tra lại số dư nợ của tài khoản mới tạo"},{id:2,title:"Báo cáo General Ledger",detail:"In / Xem báo cáo General Ledger. Ghi nhận doanh thu theo hạng mục"},{id:3,title:"Báo cáo Aged Receivable",detail:"In / Xem báo cáo Aging Summary. Ghi nhận thông tin tuổi nợ"},{id:4,title:"Báo cáo Partner Ledger",detail:"In / Xem báo cáo Partner Ledger. Ghi nhận số công nợ phải thu"},{id:5,title:"Báo cáo Journal Audit",detail:"In / Xem báo cáo Journal. Ghi nhận các giao dịch chính"},{id:6,title:"Báo cáo Trial Balance",detail:"In / Xem báo cáo Trial Balance. Ghi nhận tổng số dư Debit / Credit"}]},
+];
+
+const HW_GROUP_TAGS = {
+  "DIRECT": { bg:"#dbeafe", text:"#1d4ed8" },
+  "B2B": { bg:"#ede9fe", text:"#6d28d9" },
+  "NIGHT AUDIT": { bg:"#d1fae5", text:"#065f46" },
+  "FINANCE": { bg:"#fef3c7", text:"#92400e" },
+};
+
 export default function App() {
   const [view, setView] = useState("home");
   const [activeModule, setActiveModule] = useState(null);
   const [activeLesson, setActiveLesson] = useState(0);
+
+  const [hwUserName, setHwUserName] = useState("");
+  const [hwNameInput, setHwNameInput] = useState("");
+  const [activeHW, setActiveHW] = useState(null);
+  const [hwCurrentStep, setHwCurrentStep] = useState(0);
+  const [hwResults, setHwResults] = useState({});
+  const [hwStepInput, setHwStepInput] = useState("");
+
+  const startHW = (hw) => { setActiveHW(hw); setHwCurrentStep(0); setHwStepInput(""); setView("hw_doing"); };
+  const getHWResult = (hwId) => hwResults[hwId] || {};
+  const getStepResult = (hwId, stepId) => (hwResults[hwId] || {})[stepId] || null;
+  const handleHWPass = () => {
+    const hw = activeHW; const step = hw.steps[hwCurrentStep];
+    setHwResults(prev => ({ ...prev, [hw.id]: { ...(prev[hw.id]||{}), [step.id]: { result:hwStepInput, status:"pass" } } }));
+    setHwStepInput("");
+    if (hwCurrentStep < hw.steps.length - 1) setHwCurrentStep(s => s+1); else setView("hw_list");
+  };
+  const handleHWFail = () => {
+    const hw = activeHW; const step = hw.steps[hwCurrentStep];
+    setHwResults(prev => ({ ...prev, [hw.id]: { ...(prev[hw.id]||{}), [step.id]: { result:hwStepInput, status:"fail" } } }));
+    setHwStepInput("");
+  };
+  const getHWStatus = (hw) => {
+    const r = getHWResult(hw.id); const done = Object.keys(r).length;
+    if (done === 0) return "pending";
+    if (done === hw.steps.length && Object.values(r).every(s => s.status === "pass")) return "complete";
+    return "inprogress";
+  };
+  const getHWTotalStats = () => {
+    let pass = 0, fail = 0;
+    HOMEWORK_DATA.forEach(hw => Object.values(getHWResult(hw.id)).forEach(s => { if(s.status==="pass") pass++; else fail++; }));
+    return { pass, fail, total: HOMEWORK_DATA.reduce((a,h) => a+h.steps.length, 0) };
+  };
+
+  // HW LOGIN
+  if (view === "hw_login") return (
+    <div style={{ minHeight:"100vh", background:"#0f172a", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
+      <div style={{ background:"#1e293b", borderRadius:20, padding:"48px 40px", width:400, boxShadow:"0 25px 50px rgba(0,0,0,0.5)", border:"1px solid #334155" }}>
+        <div style={{ textAlign:"center", marginBottom:32 }}>
+          <div style={{ fontSize:48, marginBottom:12 }}>📝</div>
+          <h1 style={{ color:"white", fontSize:24, fontWeight:800, margin:0 }}>NewPMS Homework</h1>
+          <p style={{ color:"#64748b", fontSize:14, marginTop:8 }}>Bài tập thực hành vận hành Odoo 18</p>
+        </div>
+        <div style={{ marginBottom:20 }}>
+          <label style={{ color:"#94a3b8", fontSize:13, fontWeight:600, display:"block", marginBottom:8 }}>Tên học viên</label>
+          <input value={hwNameInput} onChange={e => setHwNameInput(e.target.value)}
+            onKeyDown={e => e.key==="Enter" && hwNameInput.trim() && (setHwUserName(hwNameInput.trim()), setView("hw_list"))}
+            placeholder="Nhập tên của bạn..."
+            style={{ width:"100%", padding:"12px 16px", borderRadius:10, border:"1px solid #334155", background:"#0f172a", color:"white", fontSize:15, outline:"none", boxSizing:"border-box" }}
+          />
+        </div>
+        <button onClick={() => hwNameInput.trim() && (setHwUserName(hwNameInput.trim()), setView("hw_list"))}
+          style={{ width:"100%", padding:"14px", borderRadius:10, border:"none", background:"#f59e0b", color:"white", fontSize:15, fontWeight:700, cursor:"pointer", marginBottom:12 }}>
+          Bắt đầu làm bài →
+        </button>
+        <button onClick={() => setView("home")} style={{ width:"100%", padding:"10px", borderRadius:10, border:"1px solid #334155", background:"transparent", color:"#64748b", fontSize:13, cursor:"pointer" }}>
+          ← Quay lại Training
+        </button>
+      </div>
+    </div>
+  );
+
+  // HW REPORT
+  if (view === "hw_report") {
+    const stats = getHWTotalStats();
+    return (
+      <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
+        <div style={{ background:"#0f172a", padding:"0 24px", height:56, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+          <button onClick={() => setView("hw_list")} style={{ background:"rgba(255,255,255,0.08)", border:"none", color:"#94a3b8", padding:"6px 12px", borderRadius:6, cursor:"pointer", fontSize:13 }}>← Danh sách</button>
+          <div style={{ color:"white", fontSize:13, fontWeight:600 }}>Báo cáo — {hwUserName}</div>
+          <div />
+        </div>
+        <div style={{ maxWidth:800, margin:"32px auto", padding:"0 24px" }}>
+          <div style={{ background:"white", borderRadius:16, padding:32, marginBottom:24, border:"1px solid #e2e8f0" }}>
+            <h2 style={{ margin:"0 0 24px", fontSize:20, fontWeight:700, color:"#0f172a" }}>📊 Tổng kết — {hwUserName}</h2>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:16, marginBottom:24 }}>
+              {[{label:"Tổng bước",value:stats.total,color:"#3b82f6"},{label:"✅ Pass",value:stats.pass,color:"#10b981"},{label:"❌ Fail",value:stats.fail,color:"#ef4444"}].map((s,i) => (
+                <div key={i} style={{ background:"#f8fafc", borderRadius:12, padding:20, textAlign:"center", border:`2px solid ${s.color}20` }}>
+                  <div style={{ fontSize:32, fontWeight:800, color:s.color }}>{s.value}</div>
+                  <div style={{ fontSize:13, color:"#64748b", marginTop:4 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ background:"#f1f5f9", borderRadius:10, padding:"12px 16px", fontSize:14, color:"#475569" }}>
+              Tỷ lệ hoàn thành: <strong style={{ color:"#0f172a" }}>{stats.total > 0 ? Math.round(stats.pass/stats.total*100) : 0}%</strong>
+            </div>
+          </div>
+          {HOMEWORK_DATA.map(hw => {
+            const r = getHWResult(hw.id);
+            if (Object.keys(r).length === 0) return null;
+            const passCount = Object.values(r).filter(s => s.status==="pass").length;
+            const failCount = Object.values(r).filter(s => s.status==="fail").length;
+            return (
+              <div key={hw.id} style={{ background:"white", borderRadius:16, padding:24, marginBottom:16, border:"1px solid #e2e8f0" }}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16 }}>
+                  <div style={{ fontWeight:700, color:"#0f172a", fontSize:15 }}>Bài {hw.id}: {hw.title}</div>
+                  <div style={{ display:"flex", gap:8 }}>
+                    <span style={{ background:"#dcfce7", color:"#15803d", padding:"3px 10px", borderRadius:6, fontSize:12, fontWeight:600 }}>✅ {passCount}</span>
+                    {failCount > 0 && <span style={{ background:"#fee2e2", color:"#dc2626", padding:"3px 10px", borderRadius:6, fontSize:12, fontWeight:600 }}>❌ {failCount}</span>}
+                  </div>
+                </div>
+                {hw.steps.map(step => {
+                  const sr = r[step.id]; if (!sr) return null;
+                  return (
+                    <div key={step.id} style={{ display:"flex", gap:12, padding:"8px 0", borderBottom:"1px solid #f1f5f9", alignItems:"flex-start" }}>
+                      <span style={{ fontSize:14 }}>{sr.status==="pass" ? "✅" : "❌"}</span>
+                      <div style={{ flex:1 }}>
+                        <div style={{ fontSize:13, fontWeight:600, color:"#1e293b" }}>Bước {step.id}: {step.title}</div>
+                        {sr.result && <div style={{ fontSize:12, color:"#64748b", marginTop:2 }}>Kết quả: {sr.result}</div>}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // HW DOING
+  if (view === "hw_doing" && activeHW) {
+    const hw = activeHW;
+    const step = hw.steps[hwCurrentStep];
+    const stepResult = getStepResult(hw.id, step.id);
+    const progress = Math.round((hwCurrentStep / hw.steps.length) * 100);
+    return (
+      <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
+        <div style={{ background:"#0f172a", padding:"0 24px", height:56, display:"flex", alignItems:"center", justifyContent:"space-between", position:"sticky", top:0, zIndex:10 }}>
+          <button onClick={() => setView("hw_list")} style={{ background:"rgba(255,255,255,0.08)", border:"none", color:"#94a3b8", padding:"6px 12px", borderRadius:6, cursor:"pointer", fontSize:13 }}>← Danh sách</button>
+          <div style={{ color:"white", fontSize:13, fontWeight:600 }}>Bài {hw.id}: {hw.title}</div>
+          <div style={{ color:"#64748b", fontSize:12 }}>Bước {hwCurrentStep+1}/{hw.steps.length}</div>
+        </div>
+        <div style={{ maxWidth:720, margin:"32px auto", padding:"0 20px" }}>
+          <div style={{ background:"white", borderRadius:12, padding:"16px 20px", marginBottom:20, border:"1px solid #e2e8f0" }}>
+            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:8 }}>
+              <span style={{ fontSize:12, color:"#64748b" }}>Tiến độ</span>
+              <span style={{ fontSize:12, color:"#64748b" }}>{progress}%</span>
+            </div>
+            <div style={{ height:6, background:"#f1f5f9", borderRadius:3 }}>
+              <div style={{ height:6, background:hw.groupColor, borderRadius:3, width:`${progress}%`, transition:"width 0.3s" }} />
+            </div>
+          </div>
+          <div style={{ background:`${hw.groupColor}10`, border:`1px solid ${hw.groupColor}30`, borderRadius:12, padding:"16px 20px", marginBottom:20 }}>
+            <div style={{ fontSize:11, fontWeight:700, color:hw.groupColor, letterSpacing:"0.5px", marginBottom:6 }}>TÌNH HUỐNG THỰC HÀNH</div>
+            <div style={{ fontSize:13, color:"#334155", lineHeight:1.6 }}>{hw.scenario}</div>
+          </div>
+          <div style={{ background:"white", borderRadius:16, border:"1px solid #e2e8f0", overflow:"hidden", marginBottom:20, boxShadow:"0 4px 12px rgba(0,0,0,0.05)" }}>
+            <div style={{ background:hw.groupColor, padding:"20px 24px" }}>
+              <div style={{ color:"rgba(255,255,255,0.7)", fontSize:12, fontWeight:600, marginBottom:4 }}>BƯỚC {step.id}</div>
+              <div style={{ color:"white", fontSize:20, fontWeight:700 }}>{step.title}</div>
+            </div>
+            <div style={{ padding:"24px" }}>
+              <div style={{ background:"#f8fafc", borderRadius:10, padding:"14px 16px", marginBottom:20, border:"1px solid #e2e8f0" }}>
+                <div style={{ fontSize:11, fontWeight:700, color:"#94a3b8", marginBottom:6 }}>CHI TIẾT / GIÁ TRỊ CẦN NHẬP</div>
+                <div style={{ fontSize:14, color:"#334155", lineHeight:1.6 }}>{step.detail}</div>
+              </div>
+              <div style={{ marginBottom:20 }}>
+                <label style={{ fontSize:13, fontWeight:600, color:"#374151", display:"block", marginBottom:8 }}>Kết quả ghi nhận</label>
+                <textarea value={hwStepInput} onChange={e => setHwStepInput(e.target.value)}
+                  placeholder="Nhập kết quả thực hiện..." rows={3}
+                  style={{ width:"100%", padding:"12px 16px", borderRadius:10, border:"1px solid #d1d5db", fontSize:14, outline:"none", resize:"vertical", boxSizing:"border-box", fontFamily:"inherit" }}
+                />
+              </div>
+              {stepResult && stepResult.status === "fail" && (
+                <div style={{ background:"#fff7ed", border:"1px solid #fed7aa", borderRadius:10, padding:"12px 16px", marginBottom:16, color:"#9a3412", fontSize:13 }}>
+                  ⚠️ Bước này đã Fail. Vui lòng nhập lại kết quả và thử lại.
+                </div>
+              )}
+              <div style={{ display:"flex", gap:12 }}>
+                <button onClick={handleHWFail} style={{ flex:1, padding:"14px", borderRadius:10, border:"2px solid #fca5a5", background:"#fff1f2", color:"#dc2626", fontSize:15, fontWeight:700, cursor:"pointer" }}>❌ Fail</button>
+                <button onClick={handleHWPass} style={{ flex:2, padding:"14px", borderRadius:10, border:"none", background:hw.groupColor, color:"white", fontSize:15, fontWeight:700, cursor:"pointer" }}>
+                  ✅ Pass {hwCurrentStep < hw.steps.length-1 ? "→ Bước tiếp" : "→ Hoàn thành"}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div style={{ background:"white", borderRadius:12, padding:"16px 20px", border:"1px solid #e2e8f0" }}>
+            <div style={{ fontSize:12, fontWeight:600, color:"#94a3b8", marginBottom:12 }}>CÁC BƯỚC</div>
+            <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
+              {hw.steps.map((s, i) => {
+                const sr = getStepResult(hw.id, s.id); const isCurrent = i === hwCurrentStep;
+                return (
+                  <div key={s.id} onClick={() => { setHwCurrentStep(i); setHwStepInput(""); }}
+                    style={{ width:36, height:36, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:13, fontWeight:700, cursor:"pointer",
+                      background: isCurrent ? hw.groupColor : sr ? (sr.status==="pass" ? "#10b981" : "#ef4444") : "#f1f5f9",
+                      color: isCurrent || sr ? "white" : "#94a3b8",
+                      border: isCurrent ? `3px solid ${hw.groupColor}` : "none"
+                    }}>{s.id}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // HW LIST
+  if (view === "hw_list") {
+    const stats = getHWTotalStats();
+    return (
+      <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
+        <div style={{ background:"#0f172a", padding:"0 24px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+            <div style={{ fontSize:20 }}>📝</div>
+            <div>
+              <div style={{ color:"white", fontSize:14, fontWeight:700 }}>NewPMS Homework</div>
+              <div style={{ color:"#f59e0b", fontSize:10, letterSpacing:"1px" }}>Học viên: {hwUserName}</div>
+            </div>
+          </div>
+          <div style={{ display:"flex", gap:8 }}>
+            <button onClick={() => setView("hw_report")} style={{ background:"#3b82f6", border:"none", color:"white", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600 }}>📊 Báo cáo</button>
+            <button onClick={() => setView("home")} style={{ background:"rgba(255,255,255,0.08)", border:"none", color:"#94a3b8", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13 }}>← Training</button>
+          </div>
+        </div>
+        <div style={{ background:"#1e293b", padding:"16px 24px" }}>
+          <div style={{ maxWidth:960, margin:"0 auto", display:"flex", gap:24, alignItems:"center" }}>
+            <div style={{ color:"#94a3b8", fontSize:13 }}>Tiến độ tổng:</div>
+            <div style={{ flex:1, height:8, background:"#334155", borderRadius:4 }}>
+              <div style={{ height:8, background:"#10b981", borderRadius:4, width:`${stats.total > 0 ? Math.round(stats.pass/stats.total*100) : 0}%`, transition:"width 0.3s" }} />
+            </div>
+            <div style={{ color:"white", fontSize:13, fontWeight:600, whiteSpace:"nowrap" }}>{stats.pass}/{stats.total} bước Pass</div>
+          </div>
+        </div>
+        <div style={{ maxWidth:960, margin:"32px auto", padding:"0 24px" }}>
+          <div style={{ fontSize:13, color:"#64748b", fontWeight:600, letterSpacing:"0.5px", marginBottom:16, textTransform:"uppercase" }}>Danh sách bài tập</div>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:16 }}>
+            {HOMEWORK_DATA.map(hw => {
+              const status = getHWStatus(hw); const r = getHWResult(hw.id);
+              const passCount = Object.values(r).filter(s => s.status==="pass").length;
+              const tag = HW_GROUP_TAGS[hw.group] || { bg:"#f1f5f9", text:"#475569" };
+              return (
+                <div key={hw.id} onClick={() => startHW(hw)}
+                  style={{ background:"white", borderRadius:14, padding:20, cursor:"pointer", border:"1px solid #e2e8f0", transition:"all 0.2s", boxShadow:"0 1px 3px rgba(0,0,0,0.06)" }}
+                  onMouseEnter={e => { e.currentTarget.style.transform="translateY(-2px)"; e.currentTarget.style.boxShadow="0 8px 24px rgba(0,0,0,0.1)"; e.currentTarget.style.borderColor=hw.groupColor; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform="translateY(0)"; e.currentTarget.style.boxShadow="0 1px 3px rgba(0,0,0,0.06)"; e.currentTarget.style.borderColor="#e2e8f0"; }}
+                >
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:`${hw.groupColor}15`, display:"flex", alignItems:"center", justifyContent:"center", fontWeight:800, color:hw.groupColor, fontSize:16 }}>{hw.id}</div>
+                    <span style={{ fontSize:10, fontWeight:700, padding:"3px 8px", borderRadius:4, background:tag.bg, color:tag.text }}>{hw.group}</span>
+                  </div>
+                  <div style={{ fontWeight:700, color:"#0f172a", fontSize:14, marginBottom:6 }}>{hw.title}</div>
+                  <div style={{ fontSize:12, color:"#64748b", marginBottom:12 }}>⏱ {hw.time} · {hw.steps.length} bước</div>
+                  <div style={{ height:4, background:"#f1f5f9", borderRadius:2, marginBottom:8 }}>
+                    <div style={{ height:4, background:status==="complete" ? "#10b981" : hw.groupColor, borderRadius:2, width:`${hw.steps.length > 0 ? Math.round(passCount/hw.steps.length*100) : 0}%` }} />
+                  </div>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                    <span style={{ fontSize:11, color:"#94a3b8" }}>{passCount}/{hw.steps.length} bước</span>
+                    <span style={{ fontSize:12, fontWeight:600, color: status==="complete" ? "#10b981" : status==="inprogress" ? hw.groupColor : "#94a3b8" }}>
+                      {status==="complete" ? "✅ Hoàn thành" : status==="inprogress" ? "▶ Đang làm" : "Bắt đầu →"}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (view === "home") return (
     <div style={{ minHeight:"100vh", background:"#f8fafc", fontFamily:"'Segoe UI',system-ui,sans-serif" }}>
@@ -775,7 +1061,12 @@ export default function App() {
             <div style={{ color:"#38bdf8", fontSize:9, letterSpacing:"1.5px", fontFamily:"monospace" }}>ODOO 18 · VẬN HÀNH</div>
           </div>
         </div>
-        <div style={{ fontSize:12, color:"#64748b" }}>{MODULES.length} module · {MODULES.reduce((a,m) => a+m.lessons.length, 0)} bài học</div>
+        <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+          <div style={{ fontSize:12, color:"#64748b" }}>{MODULES.length} module · {MODULES.reduce((a,m) => a+m.lessons.length, 0)} bài học</div>
+          <button onClick={() => setView("hw_login")} style={{ background:"#f59e0b", border:"none", color:"white", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:700 }}>
+            📝 Homework
+          </button>
+        </div>
       </div>
 
       <div style={{ background:"linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%)", padding:"48px 32px 40px", textAlign:"center" }}>
